@@ -18,14 +18,16 @@ namespace RefreshIConfigurationproviders.Controllers
 
         public WeatherForecastController(IOptionsSnapshot<SettingsModel> optionsSnapshot, IConfigurationRoot configurationRoot)
         {
+            // trial (not needed)
             configurationRoot.Reload();
+
+            // get values from the configuration
             Model = optionsSnapshot.Value;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public string Get()
         {
-
             return $"Name:{Model.name}: Secret:{Model.secret}";
         }
     }
